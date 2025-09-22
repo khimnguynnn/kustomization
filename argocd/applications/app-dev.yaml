@@ -8,7 +8,7 @@ spec:
   source:
     repoURL: https://github.com/khimnguynnn/kustomization.git
     targetRevision: main
-    path: overlays/develop
+    path: kustomize/verlays/develop
   destination:
     server: https://kubernetes.default.svc
     namespace: app-dev

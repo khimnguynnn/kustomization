@@ -8,7 +8,7 @@ spec:
   source:
     repoURL: https://github.com/khimnguynnn/kustomization.git
     targetRevision: main
-    path: overlays/staging
+    path: kustomize/overlays/staging
   destination:
     server: https://kubernetes.default.svc
     namespace: app-staging
