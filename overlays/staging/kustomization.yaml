@@ -1,0 +1,21 @@
+resources:
+  - ../../base
+  - namespace.yaml
+
+namespace: app-staging
+namePrefix: app-staging-
+
+labels:
+ - pairs:
+    env: staging
+
+configMapGenerator:
+  - name: nginx-homehtml
+    files:
+      - index.html
+
+patches:
+  - path: replica-patch.yaml
+    target:
+      kind: Deployment
+      name: nginx

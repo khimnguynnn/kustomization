@@ -1,0 +1,35 @@
+resources:
+  - ../../base
+  - namespace.yaml
+
+namespace: app-prod
+namePrefix: app-prod-
+
+labels:
+ - pairs:
+    env: prod
+
+configMapGenerator:
+  - name: nginx-homehtml
+    files:
+      - index.html
+
+images:
+  - name: nginx
+    newTag: latest
+
+patches:
+  - path: patches/replica-patch.yaml
+    target:
+      kind: Deployment
+      name: nginx
+
+  - path: patches/strategy-patch.yaml
+    target:
+      kind: Deployment
+      name: nginx
+  
+  - path: patches/probe-patch.yaml
+    target:
+      kind: Deployment
+      name: nginx

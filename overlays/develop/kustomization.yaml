@@ -1,0 +1,25 @@
+resources:
+  - ../../base
+  - namespace.yaml
+
+namespace: app-dev
+namePrefix: app-dev-
+
+labels:
+ - pairs:
+    env: dev
+
+images:
+  - name: nginx
+    newTag: stable
+
+configMapGenerator:
+  - name: nginx-homehtml
+    files:
+      - index.html=index.html
+
+patches:
+  - path: replica-patch.yaml
+    target:
+      kind: Deployment
+      name: nginx
